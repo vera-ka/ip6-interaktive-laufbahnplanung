@@ -1,0 +1,25 @@
+variables:
+  CI_REGISTRY_FE_IMAGE_NAME: "$CI_REGISTRY_IMAGE/ip6-interaktive-laufbahnplanung-frontend"
+  CI_REGISTRY_FE_IMAGE_TAG: "latest"
+  CI_REGISTRY_BE_IMAGE_NAME: "$CI_REGISTRY_IMAGE/ip6-interaktive-laufbahnplanung-backend"
+  CI_REGISTRY_BE_IMAGE_TAG: "latest"
+  CI_DOCKER_HOST_DEV: "ssh://deployment@86.119.36.46"
+
+stages:
+  - triggers
+
+frontend:
+  stage: triggers
+  trigger: 
+    include: frontend/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes: [frontend/*]
+
+backend:
+  stage: triggers
+  trigger:
+    include: backend/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes: [backend/*]

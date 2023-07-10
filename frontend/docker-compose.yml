@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  frontend_app:
+    container_name: frontend_app
+    image: cr.gitlab.fhnw.ch/iit-projektschiene/hs22/ip6-interaktive-laufbahnplanung/ip6-interaktive-laufbahnplanung-frontend:latest
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - ilp-app
+    hostname: frontend_app
+    external_links:
+      - backend_app
+networks:
+  ilp-app:
+      name: ilp-app
+      external: true

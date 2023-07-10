@@ -1,0 +1,312 @@
+@font-face {
+    font-family: "Helvetica-Light";
+    src: url("./fonts/HelveticaLight.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Helvetica-Rounded";
+    src: url("./fonts/HelveticaRounded.woff2") format("woff2");
+}
+
+h1 {
+    display: inline;
+}
+
+select {
+    background-color: #E8F1CA;
+}
+
+a {
+    text-decoration: none;
+    color: #8e2ad6;
+}
+
+a:hover {
+    color: #8e2ad6;
+}
+
+.second-layer {
+    /*background-color: #E8F1CA;*/
+    /*font-size: 1.2em;*/
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.root {
+    background-color: #E8F1CA;
+    background-image: url("images/background-image.png");
+    /*background-position: top;*/
+    /*background-position-x: right;*/
+    background-size: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+
+/* todo: 2x site-header -> naming? zusammenlegen?  */
+.site-header {
+    justify-content: space-between;
+    display: flex;
+    padding: 20px;
+}
+
+.site-header {
+    margin-left: 0;
+    font-size: 1.5em;
+    padding-bottom: 50px;
+    color: black;
+}
+
+.primary-title {
+    font-family: "Helvetica-Rounded";
+    color: black;
+    font-size: 100px;
+}
+
+.primary-text {
+    font-family: "Helvetica-Rounded";
+    color: black;
+    font-size: 28px;
+}
+
+.secondary-text {
+    font-family: "Helvetica-Light";
+    font-size: 28px;
+    color: black;
+}
+
+.legend {
+    font-size: 20px;
+    font-family: Helvetica-Light;
+}
+
+.subtitle {
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+.startpage-container {
+    padding-top: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.startpageLogo {
+    height: 250px;
+}
+
+.startpagebutton-container {
+    padding: 50px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.startpage-button {
+    margin-top: 20px;
+    color: black;
+    height: 135px;
+    min-width: 45vw;
+    background-color: #FAFFEC;
+    padding: 35px;
+    border-radius: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.default-button {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: black;
+    height: 160px;
+    background-color: #FAFFEC;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+}
+
+.pdf-button {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: black;
+    height: 135px;
+    background-color: #D6E7A6;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+
+}
+
+.text-button {
+    width: 100%;
+    margin-top: 20px;
+    color: black;
+    display: inline-block;
+    background-color: #E8F1CA;
+    padding: 35px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 20px;
+}
+
+.fst-icon {
+    padding-left: 30px;
+}
+
+.default-link {
+    text-decoration: none;
+    color: black;
+}
+
+.default-link:hover {
+    color: #703E91;
+}
+
+.external-link {
+    color: #703E91;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.nav.nav-pills .nav-link.active {
+    color: white !important;
+    background-color: lightgray;
+}
+
+.accordion-button {
+    font-family: "Helvetica-Light" !important;
+    font-size: 28px !important;
+    background-color: #E8F1CA !important;
+    color: black !important;
+}
+
+/* todo: 2nd item also with border-top-color black; no other border-colors when open; arrow black  */
+.accordion-item {
+    border-top-color: black !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-color: #E8F1CA !important;
+    border-left-color: #E8F1CA !important;
+    border-right-color: #E8F1CA !important;
+}
+
+.accordion-body {
+    background-color: #E8F1CA !important;
+}
+
+
+#dropdown-item {
+    width: 1150px;
+    margin: 0;
+    font-family: "Helvetica-Light";
+    font-size: 28px;
+    color: black;
+    background-color: #E8F1CA;
+    background-color: #E8F1CA;
+    border-color: black;
+
+}
+
+#dropdown-item:hover {
+    color: #8e2ad6;
+    background-color: #E8F1CA;
+}
+
+#dropdown-toggle {
+    width: 1155px;
+    text-align: left;
+    font-family: "Helvetica-Light";
+    font-size: 28px;
+    color: black;
+    background-color: #E8F1CA;
+    border-color: black;
+}
+
+.second-level-navi {
+    font-size: 23px;
+    font-family: Helvetica-Light;
+    text-align: left;
+    position: absolute;
+    left: 0px;
+    top: 250px;
+}
+
+.nav-link {
+    background-color: transparent !important;
+}
+
+
+.navbar-dark .navbar-toggler-icon {
+    width: 45px;
+    height: 49px;
+    background-image: url("images/burgerMenu.png") !important;
+}
+
+/* 2ndLevelNavi incl. bullet points*/
+.nav-link.active {
+    font-family: Helvetica;
+    /*color: #703E91 !important;*/
+    fill: #000000 !important;
+}
+
+/* 2ndLevelNavi incl. bullet points*/
+.unfilled {
+    fill: #E8F1CA !important;
+}
+
+.tooltipStyle {
+    background-color: black;
+    padding: 10px; /* distance box around text */
+    margin-left: 5px; /* distance to drop */
+    margin-bottom: 10px; /* distance to pdf-Icon */
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.site-bar-container {
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+}
+
+.site-bar-container-item {
+    text-align: center;
+    align-items: center; /* center vertically */
+    flex: 1 0 30%;
+    vertical-align: middle;
+}
+
+/*.line-break {*/
+/*  white-space: pre-wrap;*/
+/*}*/
+
+/*.button.navbar-toggle {*/
+/*  width: 100px;*/
+/*  height: 100px;*/
+/*}*/
+
+.navbar-toggler {
+    width: 60px;
+    height: 60px;
+}
+
+span.navbar-toggler-icon {
+    width: 40px;
+    height: 40px;
+}
+

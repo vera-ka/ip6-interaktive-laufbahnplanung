@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "internal_links",
+  "info": {
+    "singularName": "internal-link",
+    "pluralName": "internal-links",
+    "displayName": "InternalLink",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "internalURL": {
+      "type": "string"
+    },
+    "subcategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "internal_links"
+    }
+  }
+}

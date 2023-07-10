@@ -1,0 +1,88 @@
+image: node:18-alpine
+
+stages:
+  - build_cache
+  - test
+  - build
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - frontend/node_modules/
+
+cache-job:
+  stage: build_cache
+  script:
+    - echo "Cache node_modules"
+    - cd frontend/
+    - npm ci
+
+frontend-test-job:
+  stage: test
+  script:
+    - echo "Running frontend tests"
+    - cd frontend/
+    - npm ci
+    - npm run test
+
+frontend-build-job:
+  stage: build
+  artifacts:
+    name: "build"
+    untracked: true
+    expire_in: 30 mins
+    paths:
+      - build/
+  script:
+    - echo "Running frontend build"
+    - cd frontend/
+    - npm ci
+    # fixme: should run with eslint
+    - DISABLE_ESLINT_PLUGIN=true npm run build
+
+frontend-build-docker-job:
+  stage: build
+  image: docker:19.03.1
+  services:
+    # To obtain a Docker daemon, request a Docker-in-Docker service
+    - docker:19.03.1-dind
+  tags:
+    - csrunner1
+  script:
+    - cd frontend/
+    #- docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --pull -t "$CI_REGISTRY_FE_IMAGE_NAME:$CI_REGISTRY_FE_IMAGE_TAG" .
+    - docker push "$CI_REGISTRY_FE_IMAGE_NAME:$CI_REGISTRY_FE_IMAGE_TAG"
+  needs:
+    - job: frontend-build-job
+  only:
+    refs:
+      - main
+
+frontend-deploy-job:
+  stage: deploy
+  image: docker/compose:latest
+  services:
+    - docker:dind
+  tags:
+    - csrunner1
+  variables:
+    DOCKER_TLS_CERTDIR: ''
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - apk add openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$DEPLOYMENT_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - cd frontend/
+    - docker-compose -H $CI_DOCKER_HOST_DEV pull
+    - docker-compose -H $CI_DOCKER_HOST_DEV up -d
+  needs:
+    - job: frontend-build-docker-job
+  only:
+    refs:
+      - main

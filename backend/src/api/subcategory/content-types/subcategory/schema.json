@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subcategories",
+  "info": {
+    "singularName": "subcategory",
+    "pluralName": "subcategories",
+    "displayName": "Subcategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "external_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::external-link.external-link",
+      "mappedBy": "subcategory"
+    },
+    "internal_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::internal-link.internal-link",
+      "mappedBy": "subcategory"
+    },
+    "pdf_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pdf-link.pdf-link",
+      "mappedBy": "subcategory"
+    },
+    "texts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::text.text",
+      "mappedBy": "subcategory"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "subcategories"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

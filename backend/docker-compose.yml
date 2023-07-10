@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  backend_app:
+    container_name: backend_app
+    image: cr.gitlab.fhnw.ch/iit-projektschiene/hs22/ip6-interaktive-laufbahnplanung/ip6-interaktive-laufbahnplanung-backend:latest
+    restart: always
+    ports:
+      - "1337:1337"
+    hostname: backend_app
+    networks:
+      - ilp-app
+networks:
+  ilp-app:
+    driver: bridge
+    name: ilp-app
